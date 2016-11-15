@@ -1,17 +1,18 @@
-# Welcome to ASP.NET Core & React & Typescript & Browserify
+# ASP.NET Core & React & Typescript & Browserify
 
 We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
 
 You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
 
-## This application consists of:
+## How Works
 
-*   Sample pages using ASP.NET Core MVC
-*   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
+*   npm install
+*   typings i
+*   bower install
+*   gulp default
 
 ## How to
-
+     
 *   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
 *   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
 *   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
