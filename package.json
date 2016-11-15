@@ -27,6 +27,7 @@
   "dependencies": {
     "lodash": "^4.17.1",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
     "redux": "^3.6.0"
   },
@@ -39,7 +40,8 @@
     "react": "global:React",
     "react-dom": "global:ReactDOM",
     "jquery": "global:$",
-    "lodash": "global:_"
+    "lodash": "global:_",
+    "react-bootstrap": "global:Bootstrap"
   },
   "browser": {
     "jquery": "./dist/lib/jquery/dist/jquery.min.js"

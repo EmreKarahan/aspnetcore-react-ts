@@ -16,8 +16,10 @@ var HelloComponent = (function (_super) {
     }
     HelloComponent.prototype.render = function () {
         return React.createElement("div", null, 
-            React.createElement("h2", null, this.props.message)
-        );
+            React.createElement(ReactBootstrap.ButtonToolbar, null, 
+                React.createElement(ReactBootstrap.Button, {bsStyle: "primary", bsSize: "large"}, "Large button"), 
+                React.createElement(ReactBootstrap.Button, {bsSize: "large"}, "Large button")), 
+            React.createElement("h2", null, this.props.message));
     };
     return HelloComponent;
 }(React.Component));
