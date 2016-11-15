@@ -8,17 +8,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 var HelloComponent = (function (_super) {
     __extends(HelloComponent, _super);
     function HelloComponent(props) {
         _super.call(this, props);
+        console.log(props.message);
     }
     HelloComponent.prototype.render = function () {
-        var b = $('#main');
-        var a = React.createElement("div", null, "Hellooo ");
-        console.log(b);
-        return a;
+        return React.createElement("div", null, this.props.message);
     };
     return HelloComponent;
 }(React.Component));
@@ -36,15 +33,18 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
 var ReactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
-var Hello_1 = require('./components/Hello');
+var Hello_1 = require('./Components/Hello');
 var MainClass = (function (_super) {
     __extends(MainClass, _super);
     function MainClass(props) {
         _super.call(this, props);
+        //     Helper.AjaxRequest("color.json", RequestType.GET, (data: Array<IColor>) => {                    
+        // });
     }
     MainClass.prototype.render = function () {
+        var message = "Hello React!";
         var output = React.createElement("div", null, 
-            React.createElement(Hello_1.HelloComponent, null)
+            React.createElement(Hello_1.HelloComponent, {message: message})
         );
         return output;
     };
@@ -53,4 +53,4 @@ var MainClass = (function (_super) {
 ReactDom.render(React.createElement(MainClass, null), document.getElementById('main'));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/Hello":1}]},{},[2]);
+},{"./Components/Hello":1}]},{},[2]);

@@ -232,3 +232,10 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+
+#npm typings
+typings/
+
+#bower packages
+wwwroot/lib/

@@ -2,6 +2,7 @@
   "globalDependencies": {
     "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
     "jquery": "registry:dt/jquery#1.10.0+20160929162922",
+    "lodash": "registry:dt/lodash#4.14.0+20161110215204",
     "react": "registry:dt/react#0.14.0+20161024223416",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
   }

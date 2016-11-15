@@ -15,29 +15,29 @@ var tsProject = ts.createProject('src/tsconfig.json', { typescript: typescript }
 var config = new Config();
 
 gulp.task("ts-compile", function name() {
-    var result = gulp.src('src/**/*{ts,tsx}')
+    var result = gulp.src(config.source + '/**/*{ts,tsx}')
         .pipe(ts(tsProject));
-    return result.js.pipe(gulp.dest('.tmp'));
+    return result.js.pipe(gulp.dest(config.tmpOutputPath));
 });
 
 gulp.task('default', ['ts-compile'], function () {
     return browserify({
-        entries: './.tmp/main.js',
+        entries: config.javascriptFile,
     })
         .transform(browserifyshim)
         .bundle()
-        .pipe(source('app.js'))
-        .pipe(gulp.dest('wwwroot/js'))
+        .pipe(source(config.jsOutputFileName))
+        .pipe(gulp.dest(config.outputPath))
         .pipe(buffer())
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
-        .pipe(gulp.dest('wwwroot/js'));
+        .pipe(gulp.dest(config.outputPath));
 });
 
 gulp.task('clean', function (done) {
-    del(['./.tmp'], done.bind(this));
+    del([config.tmpOutputPath], done.bind(this));
 });
 
 gulp.task('watch', ['clean', 'default'], function () {
-    gulp.watch('src/**/*{ts,tsx}', ['default']);
+    gulp.watch(config.source + '/**/*{ts,tsx}', ['default']);
 });

@@ -2,21 +2,18 @@
 
 import * as React from 'react';
 import *  as $ from 'jquery';
+import * as _ from 'lodash';
 
 
-export class HelloComponent extends React.Component<any, any>
+export class HelloComponent extends React.Component<{message?:string}, any>
 {
     constructor(props: any) {
         super(props);
+        console.log(props.message);        
     }
 
-
-    render() { 
-        var b = $('#main');
-        var a = <div>Hellooo </div>; 
-        console.log(b);
-
-        return a;
+    public render() {
+        return <div>{this.props.message}</div>;
     }
 }
 

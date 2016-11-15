@@ -11,7 +11,8 @@
         "!./node_modules/**/*"
     ],
     "files": [
-        //"./main.tsx",
+        "./main.tsx",
+        "./Model/IColor.ts",
         "./**/*.ts",
         "./**/*.tsx"
     ]

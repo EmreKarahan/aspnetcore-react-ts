@@ -25,6 +25,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "lodash": "^4.17.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
@@ -36,7 +37,8 @@
   "browserify-shim": {
     "react": "global:React",
     "react-dom": "global:ReactDOM",
-    "jquery": "global:$"
+    "jquery": "global:$",
+    "lodash": "global:_"
   },
   "browser": {
     "jquery": "./dist/lib/jquery/dist/jquery.min.js"
