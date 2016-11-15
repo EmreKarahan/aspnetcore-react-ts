@@ -29,6 +29,8 @@ namespace aspnet_ts_react
         {
             // Add framework services.
             services.AddMvc();
+            //Add Signalr
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +57,9 @@ namespace aspnet_ts_react
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseWebSockets();
+            app.UseSignalR();
         }
     }
 }

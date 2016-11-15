@@ -15,7 +15,9 @@ var HelloComponent = (function (_super) {
         console.log(props.message);
     }
     HelloComponent.prototype.render = function () {
-        return React.createElement("div", null, this.props.message);
+        return React.createElement("div", null, 
+            React.createElement("h2", null, this.props.message)
+        );
     };
     return HelloComponent;
 }(React.Component));

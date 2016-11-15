@@ -13,7 +13,7 @@ export class HelloComponent extends React.Component<{message?:string}, any>
     }
 
     public render() {
-        return <div>{this.props.message}</div>;
+        return <div><h2>{this.props.message}</h2></div>;
     }
 }
 
