@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
@@ -20,7 +20,7 @@
 
     <div class="container body-content">
         @RenderBody()
-            
+
     </div>
 
     <environment names="Development">
@@ -45,7 +45,7 @@
         <script src="~/lib/signalr/jquery.signalR.min.js"></script>
         <script src="~/lib/react-bootstrap/react-bootstrap.min.js"></script>
         <script src="~/js/app.min.js"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>        
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("scripts", required: false)
 </body>

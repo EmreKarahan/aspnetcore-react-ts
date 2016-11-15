@@ -19,6 +19,49 @@ export class HelloComponent extends React.Component<{ message?: string }, any>
                 <ReactBootstrap.Button bsStyle="primary" bsSize="large">Large button</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsSize="large">Large button</ReactBootstrap.Button>
             </ReactBootstrap.ButtonToolbar>
+
+            <ReactBootstrap.Table responsive>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                    </tr>
+                </tbody>
+            </ReactBootstrap.Table>
             <h2>{this.props.message}</h2>
         </div>;
     }
