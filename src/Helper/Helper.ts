@@ -1,6 +1,6 @@
 /// <reference path="../../typings/index.d.ts" />
 
-import {RequestType} from './Enums'
+import { RequestType } from './Enums'
 
 class Helper {
 
@@ -9,6 +9,9 @@ class Helper {
         let isFormData = datas instanceof FormData ? true : false;
 
         let settings: JQueryAjaxSettings = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
             url: url,
             type: type.toString(),
             data: !isFormData ? (type == RequestType.POST ? JSON.stringify(datas) : datas) : datas,
@@ -58,4 +61,4 @@ class Helper {
 
 }
 
-export {Helper}
+export { Helper }
