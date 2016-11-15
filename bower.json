@@ -10,6 +10,7 @@
     "lodash": "^4.17.1",
     "signalr": "^2.2.1",
     "redux": "^3.6.0",
-    "react-bootstrap": "^0.30.6"
+    "react-bootstrap": "^0.30.6",
+    "bootflat": "*"
   }
 }

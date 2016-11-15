@@ -38,6 +38,6 @@ gulp.task('clean', function (done) {
     del([config.tmpOutputPath], done.bind(this));
 });
 
-gulp.task('watch', ['clean', 'default'], function () {
-    gulp.watch(config.source + '/**/*{ts,tsx}', ['default']);
-});
+// gulp.task('watch', ['clean', 'default'], function () {
+//     gulp.watch(config.source + '/**/*{ts,tsx}', ['default']);
+// });

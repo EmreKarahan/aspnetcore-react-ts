@@ -13,13 +13,17 @@ var HelloComponent = (function (_super) {
     function HelloComponent(props) {
         _super.call(this, props);
     }
-    HelloComponent.prototype.RenderItem = function (item) {
-        return React.createElement("div", null, item.Title);
-    };
     HelloComponent.prototype.render = function () {
-        var _this = this;
-        return React.createElement("div", null, this.props.MovieList.map(function (app, index) {
-            return _this.RenderItem(app);
+        return React.createElement("tbody", null, this.props.MovieList.map(function (item, index) {
+            return React.createElement("tr", {key: item.imdbID}, 
+                React.createElement("td", null, index), 
+                React.createElement("td", null, 
+                    React.createElement(ReactBootstrap.Image, {width: "171", height: "180", src: item.Poster, responsive: true})
+                ), 
+                React.createElement("td", null, item.Title), 
+                React.createElement("td", null, item.Year), 
+                React.createElement("td", null, item.Title), 
+                React.createElement("td", null, item.Title));
         }));
     };
     return HelloComponent;
@@ -129,28 +133,63 @@ var MainClass = (function (_super) {
     __extends(MainClass, _super);
     function MainClass(props) {
         _super.call(this, props);
-        this.state = { MovieList: [] };
+        this.state = (this.state = this.props);
+        var result = { "Search": [{ "Title": "Terminator 2: Judgment Day", "Year": "1991", "imdbID": "tt0103064", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BZDM2YjYwYWMtMWZlNi00ZDQxLWExMDctMDAzNzQ0OTkzZjljXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" }, { "Title": "The Terminator", "Year": "1984", "imdbID": "tt0088247", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BODE1MDczNTUxOV5BMl5BanBnXkFtZTcwMTA0NDQyNA@@._V1_SX300.jpg" }, { "Title": "Terminator 3: Rise of the Machines", "Year": "2003", "imdbID": "tt0181852", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk5NzM1ODgyN15BMl5BanBnXkFtZTcwMzA5MjAzMw@@._V1_SX300.jpg" }, { "Title": "Terminator Salvation", "Year": "2009", "imdbID": "tt0438488", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BODE1MTM1MzA2NF5BMl5BanBnXkFtZTcwODQ5MTA2Mg@@._V1_SX300.jpg" }, { "Title": "Terminator Genisys", "Year": "2015", "imdbID": "tt1340138", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM1NTc0NzE4OF5BMl5BanBnXkFtZTgwNDkyNjQ1NTE@._V1_SX300.jpg" }, { "Title": "Terminator: The Sarah Connor Chronicles", "Year": "2008–2009", "imdbID": "tt0851851", "Type": "series", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMyNjA5ODIxM15BMl5BanBnXkFtZTcwMTA1MjU1MQ@@._V1_SX300.jpg" }, { "Title": "Terminator 3: Rise of the Machines", "Year": "2003", "imdbID": "tt0364056", "Type": "game", "Poster": "http://ia.media-imdb.com/images/M/MV5BMjA5OTk4MTQwNV5BMl5BanBnXkFtZTgwMzkxNTEwMTE@._V1_SX300.jpg" }, { "Title": "Terminator 2: Judgment Day", "Year": "1991", "imdbID": "tt0244839", "Type": "game", "Poster": "N/A" }, { "Title": "Lady Terminator", "Year": "1989", "imdbID": "tt0095483", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUxNTk0MzE3N15BMl5BanBnXkFtZTYwNzY3Mjg5._V1_SX300.jpg" }, { "Title": "Ninja Terminator", "Year": "1985", "imdbID": "tt0199849", "Type": "movie", "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ5OTc5NzI2OV5BMl5BanBnXkFtZTcwNzk4ODQyMQ@@._V1_SX300.jpg" }], "totalResults": "77", "Response": "True" };
+        this.state = { search: result, page: 1 };
     }
     MainClass.prototype.SearcMovie = function () {
         var _this = this;
-        Helper_1.Helper.AjaxRequest(Configuration_1.Configuration.UrlList.Search, Enums_1.RequestType.GET, function (data) {
-            _this.setState({ MovieList: data });
-            console.log(_this.state.MovieList);
-        }, {
-            s: 'terminator',
+        console.log(this);
+        var self = this;
+        var query = {
+            s: this.state.keyword,
+            page: this.state.page,
             apikey: Configuration_1.Configuration.ApiKey
-        });
+        };
+        Helper_1.Helper.AjaxRequest(Configuration_1.Configuration.UrlList.Search, Enums_1.RequestType.GET, function (data) {
+            _this.setState({ search: data, totalPage: (Number(data.totalResults) / data.Search.length) });
+        }, query);
+    };
+    MainClass.prototype.ChangeKeyword = function (e) {
+        this.setState({ keyword: e.target.value });
     };
     MainClass.prototype.render = function () {
         var _this = this;
-        var output = React.createElement("div", null, 
-            React.createElement(ReactBootstrap.Button, {onClick: function (e) { _this.SearcMovie(); }}), 
-            " ", 
-            React.createElement(Hello_1.HelloComponent, {MovieList: this.state.MovieList}));
-        return output;
+        return React.createElement("div", null, 
+            React.createElement(ReactBootstrap.Grid, null, 
+                React.createElement(ReactBootstrap.Row, {className: "show-grid"}, 
+                    React.createElement(ReactBootstrap.Col, {md: 8}, 
+                        React.createElement(ReactBootstrap.Pagination, {activePage: this.state.page, onSelect: function (e) { _this.setState({ page: e }); _this.SearcMovie(); }, bsSize: "small", items: this.state.totalPage})
+                    ), 
+                    React.createElement(ReactBootstrap.Col, {md: 4}, 
+                        React.createElement(ReactBootstrap.Button, {bsStyle: "success", bsSize: "small", onClick: function (e) { _this.SearcMovie(); }}, "Search"), 
+                        React.createElement(ReactBootstrap.FormControl, {onChange: function (e) { _this.ChangeKeyword(e); }}))), 
+                React.createElement(ReactBootstrap.Row, {className: "show-grid"}, 
+                    React.createElement(ReactBootstrap.Col, {md: 12}, 
+                        React.createElement(ReactBootstrap.Table, {responsive: true}, 
+                            React.createElement("thead", null, 
+                                React.createElement("tr", null, 
+                                    React.createElement("th", null, "#"), 
+                                    React.createElement("th", null, "Table heading"), 
+                                    React.createElement("th", null, "Table heading"), 
+                                    React.createElement("th", null, "Table heading"), 
+                                    React.createElement("th", null, "Table heading"), 
+                                    React.createElement("th", null, "Table heading"), 
+                                    React.createElement("th", null, "Table heading"))
+                            ), 
+                            React.createElement(Hello_1.HelloComponent, {key: 1, MovieList: this.state.search.Search}))
+                    )
+                ), 
+                React.createElement(ReactBootstrap.Row, {className: "show-grid"}, 
+                    React.createElement(ReactBootstrap.Col, {md: 16}, 
+                        React.createElement(ReactBootstrap.Pagination, {activePage: this.state.page, onSelect: function (e) { _this.setState({ page: e }); _this.SearcMovie(); }, bsSize: "small", items: this.state.totalPage})
+                    )
+                ))
+        );
     };
     return MainClass;
 }(React.Component));
+exports.MainClass = MainClass;
 ReactDom.render(React.createElement(MainClass, null), document.getElementById('main'));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
