@@ -16,7 +16,7 @@ export class HelloComponent extends React.Component<{ message?: string }, any>
     public render() {
         return <div>
             <ReactBootstrap.ButtonToolbar>
-                <ReactBootstrap.Button bsStyle="primary" bsSize="large">Large button</ReactBootstrap.Button>
+                <ReactBootstrap.Button onClick={() => { alert("emre") } } bsStyle="primary" bsSize="large">Large button</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsSize="large">Large button</ReactBootstrap.Button>
             </ReactBootstrap.ButtonToolbar>
 
