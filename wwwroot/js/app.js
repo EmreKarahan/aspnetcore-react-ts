@@ -8,6 +8,27 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+var BaseComponent = (function (_super) {
+    __extends(BaseComponent, _super);
+    function BaseComponent(props) {
+        _super.call(this, props);
+    }
+    return BaseComponent;
+}(React.Component));
+exports.BaseComponent = BaseComponent;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],2:[function(require,module,exports){
+(function (global){
+/// <reference path="../../typings/index.d.ts"/>
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+var BaseComponent_1 = require('./BaseComponent');
 var HelloComponent = (function (_super) {
     __extends(HelloComponent, _super);
     function HelloComponent(props) {
@@ -27,11 +48,11 @@ var HelloComponent = (function (_super) {
         }));
     };
     return HelloComponent;
-}(React.Component));
+}(BaseComponent_1.BaseComponent));
 exports.HelloComponent = HelloComponent;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],2:[function(require,module,exports){
+},{"./BaseComponent":1}],3:[function(require,module,exports){
 "use strict";
 var Configuration = (function () {
     function Configuration() {
@@ -46,7 +67,7 @@ var Configuration = (function () {
 }());
 exports.Configuration = Configuration;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 var RequestType;
 (function (RequestType) {
@@ -55,7 +76,7 @@ var RequestType;
 })(RequestType || (RequestType = {}));
 exports.RequestType = RequestType;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /// <reference path="../../typings/index.d.ts" />
 "use strict";
 var Enums_1 = require('./Enums');
@@ -114,7 +135,7 @@ var Helper = (function () {
 }());
 exports.Helper = Helper;
 
-},{"./Enums":3}],5:[function(require,module,exports){
+},{"./Enums":4}],6:[function(require,module,exports){
 (function (global){
 /// <reference path="../typings/index.d.ts"/>
 "use strict";
@@ -193,4 +214,4 @@ exports.MainClass = MainClass;
 ReactDom.render(React.createElement(MainClass, null), document.getElementById('main'));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./Components/Hello":1,"./Config/Configuration":2,"./Helper/Enums":3,"./Helper/Helper":4}]},{},[5]);
+},{"./Components/Hello":2,"./Config/Configuration":3,"./Helper/Enums":4,"./Helper/Helper":5}]},{},[6]);

@@ -8,19 +8,24 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     buffer = require('vinyl-buffer'),
-    browserifyshim = require('browserify-shim');
+    browserifyshim = require('browserify-shim'),
+    gutil = require('gulp-util');
+    chalk = require('chalk');
 
 var Config = require('./gulpfile.config');
 var tsProject = ts.createProject('src/tsconfig.json', { typescript: typescript });
 var config = new Config();
 
 gulp.task("ts-compile", function name() {
+    gutil.log(chalk.green('==> Typescript\'s compiling started...'));
+    
     var result = gulp.src(config.source + '/**/*{ts,tsx}')
-        .pipe(ts(tsProject));
+        .pipe(tsProject());    
     return result.js.pipe(gulp.dest(config.tmpOutputPath));
 });
 
 gulp.task('default', ['ts-compile'], function () {
+    gutil.log(chalk.green('==> Browserify, Shimming and Uglify compiling started...'));
     return browserify({
         entries: config.javascriptFile,
     })

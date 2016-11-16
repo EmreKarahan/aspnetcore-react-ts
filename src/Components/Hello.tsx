@@ -1,13 +1,14 @@
 /// <reference path="../../typings/index.d.ts"/>
 
 import * as React from 'react';
-import *  as $ from 'jquery';
+import * as $ from 'jquery';
 import * as _ from 'lodash';
 import { Helper } from '../Helper/Helper'
 import { RequestType } from '../Helper/Enums'
 import { IMovie } from '../Model/IMovie'
+import { BaseComponent } from './BaseComponent'
 
-export class HelloComponent extends React.Component<{ MovieList?: IMovie[] }, any>
+export class HelloComponent extends BaseComponent<{ MovieList?: IMovie[] }, any>
 {
     constructor(props: IMovie[]) {
         super(props);
